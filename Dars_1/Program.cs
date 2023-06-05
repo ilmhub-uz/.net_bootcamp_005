@@ -160,7 +160,7 @@
 
 // String istalgancha harfdan iborat bo'ladi.
 
-string randString = "Bu nimadur bo'ldi va tushundik";
+//string randString = "Bu nimadur bo'ldi va tushundik";
 
 //// string uzunligini olish
 //Console.WriteLine("String Length : {0}", randString.Length);
