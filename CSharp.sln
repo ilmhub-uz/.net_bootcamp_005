@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dars_2", "Dars_2\Dars_2.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dars_3", "Dars_3\Dars_3.csproj", "{C1C75F9E-8AA0-4EC6-8333-41E9B9EAD415}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dars_4", "Dars_4\Dars_4.csproj", "{6CBB7232-0174-40A2-ADB4-7B566816841C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{C1C75F9E-8AA0-4EC6-8333-41E9B9EAD415}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1C75F9E-8AA0-4EC6-8333-41E9B9EAD415}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1C75F9E-8AA0-4EC6-8333-41E9B9EAD415}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CBB7232-0174-40A2-ADB4-7B566816841C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CBB7232-0174-40A2-ADB4-7B566816841C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CBB7232-0174-40A2-ADB4-7B566816841C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CBB7232-0174-40A2-ADB4-7B566816841C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
