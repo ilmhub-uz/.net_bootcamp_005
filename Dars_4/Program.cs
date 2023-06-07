@@ -170,4 +170,3 @@
 //    Console.WriteLine(number);                   // Output: "42"
 //    Console.WriteLine(new IntPtr(&number));      // Output: "<memory address>"
 //}
-
