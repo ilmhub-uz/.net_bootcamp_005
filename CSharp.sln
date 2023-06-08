@@ -3,21 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dars_1", "Dars_1\Dars_1.csproj", "{5EBD6378-6431-4D94-8B1C-6669D6310210}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dars_1", "Dars_1\Dars_1.csproj", "{5EBD6378-6431-4D94-8B1C-6669D6310210}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dars_2", "Dars_2\Dars_2.csproj", "{195A7DEA-FA4B-4B7C-B948-06D77122F62D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dars_2", "Dars_2\Dars_2.csproj", "{195A7DEA-FA4B-4B7C-B948-06D77122F62D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dars_3", "Dars_3\Dars_3.csproj", "{C1C75F9E-8AA0-4EC6-8333-41E9B9EAD415}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dars_3", "Dars_3\Dars_3.csproj", "{C1C75F9E-8AA0-4EC6-8333-41E9B9EAD415}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dars_4", "Dars_4\Dars_4.csproj", "{6CBB7232-0174-40A2-ADB4-7B566816841C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dars_4", "Dars_4\Dars_4.csproj", "{6CBB7232-0174-40A2-ADB4-7B566816841C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dars_5", "Dars_5\Dars_5.csproj", "{083AFFCD-2B4E-4BE7-98F6-A6F84EE4C9E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{5EBD6378-6431-4D94-8B1C-6669D6310210}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -36,5 +35,12 @@ Global
 		{6CBB7232-0174-40A2-ADB4-7B566816841C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CBB7232-0174-40A2-ADB4-7B566816841C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CBB7232-0174-40A2-ADB4-7B566816841C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{083AFFCD-2B4E-4BE7-98F6-A6F84EE4C9E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{083AFFCD-2B4E-4BE7-98F6-A6F84EE4C9E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{083AFFCD-2B4E-4BE7-98F6-A6F84EE4C9E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{083AFFCD-2B4E-4BE7-98F6-A6F84EE4C9E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
