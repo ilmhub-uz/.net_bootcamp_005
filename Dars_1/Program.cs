@@ -24,7 +24,6 @@
 
 //Console.Clear(); // Kansoldagi istalgan malumotni tozalab yuboradi.
 
-
 //// --------------------Data Typelar------------------------------------------
 
 ////----------------Butun sonlar uchun data typelar -----------------------------
@@ -128,11 +127,8 @@
 //var number1 = Convert.ToDouble(Console.ReadLine());  // Using Convert.ToInt32 method
 //Console.WriteLine(number1);
 
-
 //var number2 = double.Parse(Console.ReadLine());  // Using Parse method
 //Console.WriteLine(number2);
-
-
 
 //int raqam;
 
@@ -185,7 +181,7 @@
 //Console.WriteLine("Replace String : {0}",
 //    randString.Replace("pul", "10000000000"));
 
-// Bitta stringni boshqa stringa taqqoslash 
+// Bitta stringni boshqa stringa taqqoslash
 // Agar 0 dan kichik qiymat qaytsa 1 string 2 chisidan Alifboda oldin keladi.
 // Agar 0 qaytsa ikkalasi bir xil keladi yani teng.
 // Agar 0 dan katta qiymat kesa 1 string 2 sidan kegin turadi Alifbo tartibida.

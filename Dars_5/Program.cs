@@ -2,35 +2,33 @@
 
 public enum Languages
 {
-        Uz,
-        Uzc,
-        Ru,
+    Uz,
+    Uzc,
+    Ru,
 }
-
 
 public enum Colors
 {
-	None = 0,
-	Red = 1,
-	Blue = 2,
-	Green = 4,
-	Yellow = Red | Green,
-	Purple = Red | Blue,
-	Cyan = Blue | Green,
-	White = Red | Blue | Green
+    None = 0,
+    Red = 1,
+    Blue = 2,
+    Green = 4,
+    Yellow = Red | Green,
+    Purple = Red | Blue,
+    Cyan = Blue | Green,
+    White = Red | Blue | Green
 }
 
 public enum DaysOfWeek
 {
-	Monday = 1,
-	Tuesday = 2,
-	Wednesday = 3,
-	Thursday = 4,
-	Friday = 5,
-	Saturday = 6,
-	Sunday = 7
+    Monday = 1,
+    Tuesday = 2,
+    Wednesday = 3,
+    Thursday = 4,
+    Friday = 5,
+    Saturday = 6,
+    Sunday = 7
 }
-
 
 public enum Permissions
 {
@@ -41,58 +39,56 @@ public enum Permissions
     Delete = 8
 }
 
-   // Define an Enum without FlagsAttribute.
-   enum SingleHue : short
-   {
-      None = 0,
-      Black = 1,
-      Red = 2,
-      Green = 3,
-      Blue = 4
-   };
+// Define an Enum without FlagsAttribute.
+internal enum SingleHue : short
+{
+    None = 0,
+    Black = 1,
+    Red = 2,
+    Green = 3,
+    Blue = 4
+};
 
-   
-   [Flags]
-   enum MultiHue : short
-   {
-      None = 0,
-      Black = 1,
-      Red = 2,
-      Green = 3,
-      Blue = 4
-   };
+[Flags]
+internal enum MultiHue : short
+{
+    None = 0,
+    Black = 1,
+    Red = 2,
+    Green = 3,
+    Blue = 4
+};
 
-    public static class Program
+public static class Program
+{
+    public static void EkrangaChiqar(string nParametr) => Console.WriteLine(nParametr);
+
+    public static void ArrayniToldir(int[] array)
     {
-        public static  void  EkrangaChiqar(string parametr)
+        for (int i = 0; i < array.Length; i++)
         {
-            Console.WriteLine(parametr);
+            array[i] = i + 1;
+            Console.WriteLine(array[i]);
         }
+    }
 
-        public static void ArrayniToldir(int[] array)
-        {
-            for (int i = 0; i < array.Length; i++)
-            {
-                array[i] = i + 1;
-                Console.WriteLine(array[i]);
-            }
-        }
+    public static int Qoshish(int a, int b)
+     => a + b;
+   
 
-        public static int Qoshish(int a, int b)
-        {
-        return a + b;
-        }
+    /// <summary>
+    /// Salomlash Methodi
+    /// </summary>
+    /// <param name="pYosh">Majburiy Parametr</param>
+    /// <param name="pIsm">Optional Parametr</param>
+    public static void Salomlash(int pYosh, string pIsm = "Samandar")
+        => Console.WriteLine($"Salom {pIsm} tanishganimdan hursandaman,men ham {pYosh} yoshdaman.");
 
-        public static void Salomlash(int yosh, string ism = "Samandar")
-        {
-            Console.WriteLine($"Salom {ism} tanishganimdan hursandaman,men ham {yosh} yoshdaman.");
-        }
-
-        public static int Factorial(int n)
+    public static int Factorial(int n)
             => n == 0 ? 1 : n * Factorial(n - 1);
 
-         static async Task Main(string[] args)
-        {
+    private static async Task Main(string[] args)
+    {
         //var array = new int[10];
         //ArrayniToldir(array);
         //EkrangaChiqar("Salom");
@@ -160,7 +156,6 @@ public enum Permissions
 
         //--------------------- Enumlar --------------------
 
-
         //var day = DaysOfWeek.Monday;
         //Console.WriteLine(day);
 
@@ -225,55 +220,48 @@ public enum Permissions
         //    Console.WriteLine($"{hue} - {(int)hue}");
         //}
 
-            //Console.WriteLine(Divide(10, 2));
-      
-            
+        //Console.WriteLine(Divide(10, 2));
 
-            //int Divide(int a, int b)
-            //{
-            //    //try
-            //    //{
-            //    //    throw new ArgumentException("Argument exception");
-            //    //    // Connect to database
-            //    //    //Connection to Server
-            //    //    //Writing Files to disk
-            //    //    //Reading files from disk
-                    
-            //    //}
-            //    //catch (ArgumentException)
-            //    //{
-            //    //    return 0;
-            //    //}
-            //    //catch (DivideByZeroException)
-            //    //{
-            //    //  return 0;
-            //    //}
-            //    //catch (Exception)
-            //    //{
-            //    //    Console.WriteLine();
-            //    //    return 0;
-            //    //}
-            //    //finally
-            //    //{
-            //    //    Console.WriteLine("Finally");
-            //    //    // Idisposable dan Dispose () metodini chaqirish
-            //    //    // Garbage collector ishga tushirish
-            //    //}
-	            
-            //    try
-            //    {
-            //        throw new NullReferenceException();
-            //    }
-            //    catch(Exception e) when(e is NullReferenceException || e is ArgumentNullException
-            //    || e is DivideByZeroException)
-            //    {
-            //        Console.WriteLine("Tabrikliyman Null ushab oldiz !!!!");
-            //    }
-            //}
+        //int Divide(int a, int b)
+        //{
+        //    //try
+        //    //{
+        //    //    throw new ArgumentException("Argument exception");
+        //    //    // Connect to database
+        //    //    //Connection to Server
+        //    //    //Writing Files to disk
+        //    //    //Reading files from disk
 
-        }
+        //    //}
+        //    //catch (ArgumentException)
+        //    //{
+        //    //    return 0;
+        //    //}
+        //    //catch (DivideByZeroException)
+        //    //{
+        //    //  return 0;
+        //    //}
+        //    //catch (Exception)
+        //    //{
+        //    //    Console.WriteLine();
+        //    //    return 0;
+        //    //}
+        //    //finally
+        //    //{
+        //    //    Console.WriteLine("Finally");
+        //    //    // Idisposable dan Dispose () metodini chaqirish
+        //    //    // Garbage collector ishga tushirish
+        //    //}
 
-        
+        //    try
+        //    {
+        //        throw new NullReferenceException();
+        //    }
+        //    catch(Exception e) when(e is NullReferenceException || e is ArgumentNullException
+        //    || e is DivideByZeroException)
+        //    {
+        //        Console.WriteLine("Tabrikliyman Null ushab oldiz !!!!");
+        //    }
+        //}
     }
-
-
+}

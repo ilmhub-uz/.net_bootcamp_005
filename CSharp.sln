@@ -11,7 +11,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dars_3", "Dars_3\Dars_3.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dars_4", "Dars_4\Dars_4.csproj", "{6CBB7232-0174-40A2-ADB4-7B566816841C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dars_5", "Dars_5\Dars_5.csproj", "{083AFFCD-2B4E-4BE7-98F6-A6F84EE4C9E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dars_5", "Dars_5\Dars_5.csproj", "{083AFFCD-2B4E-4BE7-98F6-A6F84EE4C9E7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{371585F0-3462-4286-8400-8CFD1856F0B4}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

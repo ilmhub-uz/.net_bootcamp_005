@@ -25,13 +25,12 @@
 
 //int number = 10;
 //string result = (number > 0) ? "Positive" : "Non-positive";
-//Console.WriteLine(result);  
+//Console.WriteLine(result);
 
 //--------------------------switch------------------------------------------------
 //int day;
 
 //int.TryParse(Console.ReadLine(), out day);
-
 
 //switch (day)
 //{
@@ -94,6 +93,6 @@
 //    _ => "Invalid month"
 //};
 
-//Console.WriteLine(season);  
+//Console.WriteLine(season);
 
 Console.ReadKey();

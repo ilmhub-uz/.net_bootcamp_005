@@ -17,7 +17,7 @@
 //    Console.WriteLine(item);
 //    var type = item.GetType();
 //    Console.WriteLine(type);
-   
+
 //}
 
 //// Qiymat berish
@@ -39,7 +39,7 @@
 //{
 //    Console.WriteLine("Array {0} : Value : {1}",
 //        j, randomArray[j]);
-//} 
+//}
 
 //using System.Collections;
 
@@ -54,7 +54,7 @@
 //Console.WriteLine(numbers[^1]);  // Rezultat: 60
 
 //// Arrayning elementlarini ^ index orqali qirqib olish
-//// eng oxiridigi elementni va oxiridan 3 chisidi element bilan 
+//// eng oxiridigi elementni va oxiridan 3 chisidi element bilan
 //// birga qirqib olib yangi arrayga soladi.
 
 //int[] slicedNumbers = numbers[^3..^1];
@@ -74,7 +74,6 @@
 
 //// Arrayni teskarisiga o'giradi
 //Array.Reverse(randNums);
-
 
 // Arrayni orasidan qidirish agar topilmasa -1 qaytaradi.
 //Console.WriteLine("1 at index : {0} ",

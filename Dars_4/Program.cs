@@ -1,12 +1,12 @@
 ﻿//-------------------- Looplar -----------------------------
-// 1 start 
-// 2 step 
+// 1 start
+// 2 step
 // 3 stop
 
 //char start = '@';
 
 //while (true)
-//{ 
+//{
 //    start++;
 
 //    if (start == 'W') continue;
@@ -71,7 +71,6 @@
 //    }
 //}
 
-
 //for (int i = 0; i < 10; i++)
 //{
 //    var random = new Random();
@@ -81,7 +80,7 @@
 
 //    // Random random = new Random();
 //    // //0.0 va 1.0 orasidagi qoldiqli son
-//    // double randomDouble = random.NextDouble();  
+//    // double randomDouble = random.NextDouble();
 //    // Console.WriteLine(randomDouble);
 //}
 
@@ -114,8 +113,6 @@
 //        Console.WriteLine(raqam);
 //    }
 //}
-
-
 
 //string ParolYasabBer(int parolUzunligi)
 //{
