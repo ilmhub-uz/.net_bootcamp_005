@@ -2,6 +2,12 @@
 
 public class Car : Vehicle
 {
+    public Car()
+    {
+        
+    }
+
+
     public Car(string brand, DateOnly year,string color,int enginePower) 
         : base(brand, year,color,enginePower)
     {
@@ -14,6 +20,6 @@ public class Car : Vehicle
 
     public override void Stop()
     {
-        Console.WriteLine("Car has stopped.");
+        Console.WriteLine(" Car Stopped");
     }
 }

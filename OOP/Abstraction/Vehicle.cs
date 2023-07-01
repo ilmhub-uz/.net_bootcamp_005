@@ -7,6 +7,9 @@ public abstract class Vehicle
     protected string Color;
     protected int EnginePower;
 
+    protected Vehicle() { }
+    
+   
     protected Vehicle(string brand, 
         DateOnly year, 
         string color, 
