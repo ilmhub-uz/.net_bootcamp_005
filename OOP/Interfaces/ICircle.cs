@@ -2,5 +2,5 @@
 
 public interface ICircle : IShape
 {
-    public double Radius { get; set; }
+    protected abstract double Radius { get; set; }
 }

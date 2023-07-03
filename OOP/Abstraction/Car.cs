@@ -8,9 +8,12 @@ public class Car : Vehicle
     }
 
 
-    public Car(string brand, DateOnly year,string color,int enginePower) 
-        : base(brand, year,color,enginePower)
+    public Car(string brand, DateOnly year,string color,int enginePower)
     {
+        Brand = brand;
+        Year = year;
+        Color = color;
+        EnginePower = enginePower;
     }
 
     public override void Start()
