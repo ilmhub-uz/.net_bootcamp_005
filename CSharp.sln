@@ -24,7 +24,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dars_7", "Dars_7\Dars_7.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dars_8", "Dars_8\Dars_8.csproj", "{34ECE47E-6334-49AA-9BB3-BE4980F09C09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP", "OOP\OOP.csproj", "{BE839020-800F-4747-83B6-D87E23A66922}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OOP", "OOP\OOP.csproj", "{BE839020-800F-4747-83B6-D87E23A66922}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C#_Advanced", "C#_Advanced\C#_Advanced.csproj", "{CD8EE8FF-F82B-4722-ADA5-1D7F3740637C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +70,10 @@ Global
 		{BE839020-800F-4747-83B6-D87E23A66922}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE839020-800F-4747-83B6-D87E23A66922}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE839020-800F-4747-83B6-D87E23A66922}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD8EE8FF-F82B-4722-ADA5-1D7F3740637C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD8EE8FF-F82B-4722-ADA5-1D7F3740637C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD8EE8FF-F82B-4722-ADA5-1D7F3740637C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD8EE8FF-F82B-4722-ADA5-1D7F3740637C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
