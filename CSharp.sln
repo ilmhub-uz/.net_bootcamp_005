@@ -32,6 +32,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tuple_Lambda", "Tuple_Lambd
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ", "LINQ\LINQ.csproj", "{37E45D53-29DD-47F8-BFB2-8086A59F7A51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Threads", "Threads\Threads.csproj", "{D1448E9F-FB25-4DB1-9EF0-30C1F6325A40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task", "Task\Task.csproj", "{7D918AB7-76C0-4C3D-BDC6-B49E4E386768}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,6 +90,14 @@ Global
 		{37E45D53-29DD-47F8-BFB2-8086A59F7A51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37E45D53-29DD-47F8-BFB2-8086A59F7A51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37E45D53-29DD-47F8-BFB2-8086A59F7A51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1448E9F-FB25-4DB1-9EF0-30C1F6325A40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1448E9F-FB25-4DB1-9EF0-30C1F6325A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1448E9F-FB25-4DB1-9EF0-30C1F6325A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1448E9F-FB25-4DB1-9EF0-30C1F6325A40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D918AB7-76C0-4C3D-BDC6-B49E4E386768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D918AB7-76C0-4C3D-BDC6-B49E4E386768}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D918AB7-76C0-4C3D-BDC6-B49E4E386768}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D918AB7-76C0-4C3D-BDC6-B49E4E386768}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
