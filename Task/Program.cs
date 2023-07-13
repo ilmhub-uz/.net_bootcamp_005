@@ -144,3 +144,102 @@
 //     Console.WriteLine("Tuxum Qovurdim");
 //     Console.WriteLine("Ovqatlandim");
 //}
+
+
+/// <summary>
+/// DeadLock
+/// </summary>
+// OddiyMethod();
+// 
+// static Task OddiyMethod()
+// {
+//     Console.WriteLine("Method 1 ishladi ");
+//     var t3 = UchinchiMethod();
+//     if(t3.IsCompleted)
+//         BoshqaMethod();
+//     Console.WriteLine("Method 1 tugadi");
+//     return Task.CompletedTask;
+// }
+//
+// static Task BoshqaMethod()
+// {
+//     Console.WriteLine("Method 2 ishladi");
+//     return Task.CompletedTask;
+// }
+//
+// static Task UchinchiMethod()
+// {
+//     Console.WriteLine("Method 3 ishladi");
+//     var t1 = OddiyMethod();
+//     return Task.CompletedTask;
+// }
+
+/// <summary>
+/// Race Condition
+/// </summary>
+// public static class Program
+// {
+//     static int count  = 0; 
+//     static void Main()
+//     {
+//         Task t1 = new Task(Oshir);
+//         var t2 = new Task(Kamaytir);
+//         var t3 = new Task(Bol);
+
+//         t1.Start();
+//         t2.Start();
+//         t3.Start();
+
+//         Console.WriteLine(t3.IsCompletedSuccessfully);
+//         Console.WriteLine(t3.Exception);
+//         Console.Read();
+//     }
+//
+//     static void Oshir()
+//     {
+//         count++;
+//         Console.WriteLine(count);
+//     }
+//
+//     static void Kamaytir()
+//     {
+//         count--;
+//         Console.WriteLine(count);
+//     }
+//
+//     static void Bol()
+//     {
+//         count /= count;
+//         Console.WriteLine(count);
+//     }
+// }
+
+public class Program
+{
+   public static readonly List<User> users = new ()
+   {
+       new ("Samandar",19),
+       new ("Olmos",19),
+       new ("TemurMalik",19),
+       new ("Numon",19),
+       new ("Ergash",26),
+       new ("Anvar",19),
+   };
+
+   static  async Task  Main()
+   {
+       var result = GetUserAsync("Ergash").Result;
+       var resultWithAwait = await GetUserAsync("Olmos");
+       var taskResult = GetUserAsync("Numon");
+       
+       Console.WriteLine(result);
+       Console.WriteLine(resultWithAwait);
+       Console.WriteLine(taskResult);
+   }
+   
+   static  Task<User> GetUserAsync(string name)
+       => Task.FromResult(users.FirstOrDefault(s => s.Name == name ) ?? new User("", 0));
+}
+
+public record User(string Name,int Age);
+
