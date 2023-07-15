@@ -214,32 +214,185 @@
 //     }
 // }
 
-public class Program
-{
-   public static readonly List<User> users = new ()
-   {
-       new ("Samandar",19),
-       new ("Olmos",19),
-       new ("TemurMalik",19),
-       new ("Numon",19),
-       new ("Ergash",26),
-       new ("Anvar",19),
-   };
+// public class Program
+// {
+//    public static readonly List<User> users = new ()
+//    {
+//        new ("Samandar",19),
+//        new ("Olmos",19),
+//        new ("TemurMalik",19),
+//        new ("Numon",19),
+//        new ("Ergash",26),
+//        new ("Anvar",19),
+//    };
+//
+//    static  async Task  Main()
+//    {
+//        var result = GetUserAsync("Ergash").Result;
+//        var resultWithAwait = await GetUserAsync("Olmos");
+//        var taskResult = GetUserAsync("Numon");
+//        
+//        Console.WriteLine(result);
+//        Console.WriteLine(resultWithAwait);
+//        Console.WriteLine(taskResult);
+//    }
+//    
+//    static  Task<User> GetUserAsync(string name)
+//        => Task.FromResult(users.FirstOrDefault(s => s.Name == name ) ?? new User("", 0));
+// }
+//
+// public record User(string Name,int Age);
+public static  class Program {
+// static async Task Main() {
+//     ConsoleWriteLine($"Start Program");
+//       
+//     Task<int> taskA = MethodAAsync();
+//
+//     for (int i = 0; i < 5; i++) {
+//         ConsoleWriteLine($" B{i}");
+//         Task.Delay(50).Wait();
+//     }
+//
+//     // ConsoleWriteLine("Wait for taskA termination");
+//     //
+//     // await taskA;
+//     ConsoleWriteLine("Wait for taskA termination");
+//     await taskA;
+//     try
+//     {
+//         throw new AggregateException();
+//     }
+//     catch (Exception e)
+//     {
+//         Console.WriteLine(e);
+//         throw new Exception($"{e.Message} Trace {e.StackTrace} ");
+//     }
+//     
+//     Console.WriteLine(new System.Diagnostics.StackTrace());
+//  
+//     ConsoleWriteLine($"The result of taskA is {taskA.Result}");
+//     // ConsoleWriteLine($"The result of taskA is {taskA.Result}");
+//     Console.ReadKey();
+// }
+//  
+//     static async  Task<int> MethodAAsync() {
+//         for (int i = 0; i < 5; i++) {
+//             ConsoleWriteLine($" A{i}");
+//             await  Task.Delay(100);
+//         }
+//         int result = 123;
+//         ConsoleWriteLine($" A returns result {result}");
+//         return result;
+//     }
+ 
 
-   static  async Task  Main()
-   {
-       var result = GetUserAsync("Ergash").Result;
-       var resultWithAwait = await GetUserAsync("Olmos");
-       var taskResult = GetUserAsync("Numon");
-       
-       Console.WriteLine(result);
-       Console.WriteLine(resultWithAwait);
-       Console.WriteLine(taskResult);
-   }
-   
-   static  Task<User> GetUserAsync(string name)
-       => Task.FromResult(users.FirstOrDefault(s => s.Name == name ) ?? new User("", 0));
+    // static void ConsoleWriteLine(string str) {
+    //     int threadId = Environment.CurrentManagedThreadId;
+    //     Console.ForegroundColor = threadId == 1 ? ConsoleColor.White : ConsoleColor.Cyan;
+    //     Console.WriteLine(
+    //         $"{str} {new string(' ',30 - str.Length)}   Thread {threadId}");
+    // }
+    
+    // static async Task Main(string[] args) {
+    //     ConsoleWriteLine($"Start Program");
+    //
+    //     var tasks = new List<Task<string>> {
+    //         MethodAsync("A", 50),
+    //         MethodAsync("B", 100),
+    //         MethodAsync("C", 20)
+    //     };
+    //
+    //     while (tasks.Any()) {
+    //         Task<string> taskTerminated = await Task.WhenAny(tasks);
+    //         ConsoleWriteLine($"Task terminated result {taskTerminated.Id}");
+    //         tasks.Remove(taskTerminated);
+    //     }
+    //     
+    //     ConsoleWriteLine($"End Program {tasks.Count}");
+    //     Console.ReadKey();
+    // }
+    //
+    // static async Task<string> MethodAsync(string x, int delay) {
+    //     for (int i = 0; i < 3; i++) {
+    //         ConsoleWriteLine($" {x}{i}");
+    //         await Task.Delay(delay);
+    //     }
+    //     string result = new string(x[0], 4);
+    //     ConsoleWriteLine($" {x} returns result {result}");
+    //     return result;
+    // }
+    //
+    
+    // static async Task Main(string[] args) {
+    //     ConsoleWriteLine($"Start Program");
+    //
+    //     Thread thread = new Thread(MethodAAsync)
+    //     {
+    //         IsBackground = true
+    //     };
+    //     thread.Start();
+    //     //Task<int> taskA = MethodAAsync();
+    //     //await taskA;
+    //     //ConsoleWriteLine("Wait for taskA termination");
+    //     try {
+    //         
+    //         ConsoleWriteLine($"The result of taskA is {thread.ManagedThreadId}");
+    //     }
+    //     catch (ApplicationException ex) {
+    //         ConsoleWriteLine($"{ex.GetType().ToString()} Msg:{ex.Message}");
+    //     }
+    //     // Console.ReadKey();
+    // }
+    //
+    // //static async Task<int> MethodAAsync() {
+    // static void MethodAAsync() {
+    //     ConsoleWriteLine(" A");
+    //     
+    //     for (int i = 0; i < 10; i++) {
+    //         ConsoleWriteLine($" A{i}");
+    //         //await Task.Delay(100);
+    //         //Thread.Sleep(100);
+    //         ConsoleWriteLine($" A throws exception");
+    //         Console.WriteLine(Environment.CurrentManagedThreadId);
+    //         //throw new ApplicationException("Boum");
+    //     }
+    //     int result = 123;
+    //     ConsoleWriteLine($" A returns result {result}");
+    //     //return result;
+    // }
+    //
+    // static void ConsoleWriteLine(string str) {
+    //     int threadId = Thread.CurrentThread.ManagedThreadId;
+    //     Console.ForegroundColor = threadId == 1 ? ConsoleColor.White : ConsoleColor.Cyan;
+    //     Console.WriteLine(
+    //         $"{str}{new string(' ', 60 - str.Length)}   Thread {threadId}");
+    // }
+    // static async Task Main()
+    // {
+    //     // var tasks = new Task<string>[] {
+    //     //         new HttpClient().GetStringAsync("https://www.google.com/"),
+    //     //         new HttpClient().GetStringAsync("https://www.microsoft.com/"),
+    //     //         new HttpClient().GetStringAsync("https://www.ndepend.com/")
+    //     // };
+    //     
+    //     var tasks = new Task<string>[] {
+    //         File.ReadAllTextAsync(@"C:\Program Files\dotnet\dotnet.exe"),
+    //         File.ReadAllTextAsync(@"C:\Windows\explorer.exe"),
+    //         //File.ReadAllTextAsync(@"C:\Windows\py.exe"),
+    //     };
+    //      
+    //     await Task.WhenAll(tasks);
+    //     // Console.WriteLine(tasks[0].Result);
+    //     // Console.WriteLine(tasks[0].IsCompletedSuccessfully);
+    //     // Console.WriteLine(
+    //     //     $"Home page sizes: {tasks.
+    //     //         Select(t => t.Result.Length.ToString())
+    //     //         .Aggregate((str1,str2) => str1+","+str2)}");
+    //
+    //     foreach (var task in tasks)
+    //     {
+    //         Console.WriteLine(task.Result);
+    //     }
+    // }
+    
 }
-
-public record User(string Name,int Age);
-
