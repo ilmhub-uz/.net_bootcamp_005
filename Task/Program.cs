@@ -394,8 +394,5 @@ public static  class Program {
     //         Console.WriteLine(task.Result);
     //     }
     // }
-    static void Main(string[] args)
-    {
-        Console.WriteLine("Hello World");
-    }
+    
 }
