@@ -93,6 +93,8 @@ namespace Working_With_Files
                 
             LogMessage("Papka yangi joyga ko'chirildi");
 
+
+
         }
 
     }
