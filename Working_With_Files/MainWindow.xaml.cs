@@ -84,14 +84,14 @@ namespace Working_With_Files
             //    LogMessage(file);
             //}
 
-            string newPath = @"C:\Example";
-            if (Directory.Exists(path))
-            {
-                _counter++;
-                Directory.Move(newPath,$"{path}{_counter}");
-            }
+            //string newPath = @"C:\Example";
+            //if (Directory.Exists(path))
+            //{
+            //    _counter++;
+            //    Directory.Move(newPath,$"{path}{_counter}");
+            //}
                 
-            LogMessage("Papka yangi joyga ko'chirildi");
+            //LogMessage("Papka yangi joyga ko'chirildi");
 
         }
 
