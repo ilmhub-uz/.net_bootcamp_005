@@ -92,6 +92,13 @@ namespace Working_With_Files
             //}
                 
             //LogMessage("Papka yangi joyga ko'chirildi");
+            string newPath = "C:\\Example";
+            if (Directory.Exists(newPath))
+            {
+                _counter++;
+                directoryInfo.MoveTo($"{newPath} {_counter++}");
+                LogMessage($"Papka ga {newPath} ko'chirildi");
+            }
 
         }
 
