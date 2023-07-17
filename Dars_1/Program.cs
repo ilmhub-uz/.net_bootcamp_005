@@ -239,7 +239,3 @@
 
 ////// \n,\b,\t kabi belgilarni ishlata olasiz.
 //Console.Write(newString + "\n");
-static void Main(string[] args)
-{
-    Console.WriteLine("Hello World");
-}

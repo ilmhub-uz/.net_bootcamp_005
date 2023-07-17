@@ -1,4 +1,5 @@
 ﻿//namespace C__Advanced;
+
 //static class Program
 //{
 //    static void Main(string[] args)
@@ -135,8 +136,3 @@
 //        SampleEvent?.Invoke(this, new SampleEventArgs("Default Qiymat"));
 //    }
 //}
-
-static void Main(string[]args)
-{
-    Console.WriteLine("Hello World");
-}
