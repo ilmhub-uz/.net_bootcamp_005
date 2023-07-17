@@ -139,4 +139,9 @@
 //     public override string ToString() => $"{_fname} {_lname}".Trim();
 // }
 
+static void Main(string[] args)
+{
+    Console.WriteLine("Hello World");
+}
+
 

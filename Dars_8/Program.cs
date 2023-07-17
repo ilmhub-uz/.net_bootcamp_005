@@ -48,3 +48,7 @@ using Microsoft.Extensions.Logging;
 
 //Console.WriteLine(exception);
 
+static void Main(string[] args)
+{
+    Console.WriteLine("Hello World");
+}
