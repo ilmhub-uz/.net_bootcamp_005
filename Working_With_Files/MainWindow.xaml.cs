@@ -92,7 +92,6 @@ namespace Working_With_Files
             //}
                 
             //LogMessage("Papka yangi joyga ko'chirildi");
-
             string newPath = "C:\\Example";
             if (Directory.Exists(newPath))
             {
@@ -100,9 +99,6 @@ namespace Working_With_Files
                 directoryInfo.MoveTo($"{newPath} {_counter++}");
                 LogMessage($"Papka ga {newPath} ko'chirildi");
             }
-               
-
-
 
         }
 
