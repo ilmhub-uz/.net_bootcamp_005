@@ -26,7 +26,7 @@ namespace Working_With_Files
         {
 
             //Bizga ishlashimiz uchun Papka kerak bo'ladi
-            const  string path = @"C:\Users\furqa\Desktop\YangiPapka";
+            const  string path = @"C:\Example";
 
             //DirectoryInfo Classdan obyekt yasaladi.
             DirectoryInfo directoryInfo = new(path);
@@ -93,6 +93,11 @@ namespace Working_With_Files
                 
             //LogMessage("Papka yangi joyga ko'chirildi");
 
+            directoryInfo.Delete();
+            LogMessage($"Papka o'chirildi");
+
+            Directory.Delete(path);
+            LogMessage("Papka Topilmadi");
         }
 
     }
