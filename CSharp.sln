@@ -13,11 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dars_4", "Dars_4\Dars_4.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dars_5", "Dars_5\Dars_5.csproj", "{083AFFCD-2B4E-4BE7-98F6-A6F84EE4C9E7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{371585F0-3462-4286-8400-8CFD1856F0B4}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dars_6", "Dars_6\Dars_6.csproj", "{30B03536-65EE-4B0A-AAE7-94351F6AA1F4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dars_7", "Dars_7\Dars_7.csproj", "{0E751A4B-7CF1-4508-8E9D-0A61258DF438}"
@@ -28,15 +23,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OOP", "OOP\OOP.csproj", "{B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C#_Advanced", "C#_Advanced\C#_Advanced.csproj", "{CD8EE8FF-F82B-4722-ADA5-1D7F3740637C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tuple_Lambda", "Tuple_Lambda\Tuple_Lambda.csproj", "{204E2365-5028-4576-80D6-FD0742B0C59C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tuple_Lambda", "Tuple_Lambda\Tuple_Lambda.csproj", "{204E2365-5028-4576-80D6-FD0742B0C59C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ", "LINQ\LINQ.csproj", "{37E45D53-29DD-47F8-BFB2-8086A59F7A51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LINQ", "LINQ\LINQ.csproj", "{37E45D53-29DD-47F8-BFB2-8086A59F7A51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Threads", "Threads\Threads.csproj", "{D1448E9F-FB25-4DB1-9EF0-30C1F6325A40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Threads", "Threads\Threads.csproj", "{D1448E9F-FB25-4DB1-9EF0-30C1F6325A40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task", "Task\Task.csproj", "{7D918AB7-76C0-4C3D-BDC6-B49E4E386768}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task", "Task\Task.csproj", "{7D918AB7-76C0-4C3D-BDC6-B49E4E386768}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructure", "DataStructure\DataStructure.csproj", "{0364F5A3-8905-45C7-9AA1-1CD1C37C750A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataStructure", "DataStructure\DataStructure.csproj", "{0364F5A3-8905-45C7-9AA1-1CD1C37C750A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Working_With_Files", "Working_With_Files\Working_With_Files.csproj", "{8F744A23-8A35-4DE4-A70C-5448D247A63D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -104,6 +101,10 @@ Global
 		{0364F5A3-8905-45C7-9AA1-1CD1C37C750A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0364F5A3-8905-45C7-9AA1-1CD1C37C750A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0364F5A3-8905-45C7-9AA1-1CD1C37C750A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F744A23-8A35-4DE4-A70C-5448D247A63D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F744A23-8A35-4DE4-A70C-5448D247A63D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F744A23-8A35-4DE4-A70C-5448D247A63D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F744A23-8A35-4DE4-A70C-5448D247A63D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -351,40 +351,40 @@ public static  class Program
         
         
         // Numon  1 ta que 1 ta array 7 secund bahosi 5 
-        // var timer = new Stopwatch();
-        // timer.Start();
-        // var queue = new Queue<int>();
-        //     queue.Enqueue(1);
-        //     queue.Enqueue(2);
-        //     queue.Enqueue(3);
-        //     queue.Enqueue(4);
-        //     queue.Enqueue(5);
-        //     queue.Enqueue(6);
-        //     queue.Enqueue(7);
-        //     queue.Enqueue(8);
-        //     queue.Enqueue(9);
-        //     queue.Enqueue(10);
-        //
-        // RemoveCenter(5, queue);
-        // foreach(int i in queue)
-        //     Console.WriteLine(i);
-        //
-        // timer.Stop();
-        // Console.WriteLine(timer.ElapsedMilliseconds.ToString("0.00ms"));
-        //
-        // void RemoveCenter<T>(int index, Queue<T> queue)
-        // {
-        //     if(index < 0 || index >= queue.Count) throw new IndexOutOfRangeException();
-        //
-        //     T[] array = new T[queue.Count];
-        //     queue.CopyTo(array, 0); 
-        //     queue.Clear(); 
-        //     for(int i = 0; i < array.Length; i++) 
-        //     {
-        //         if(i == index) continue; 
-        //         queue.Enqueue(array[i]);
-        //     }
-        // }
+        var timer = new Stopwatch();
+        timer.Start();
+        var queue = new Queue<int>();
+            queue.Enqueue(1);
+            queue.Enqueue(2);
+            queue.Enqueue(3);
+            queue.Enqueue(4);
+            queue.Enqueue(5);
+            queue.Enqueue(6);
+            queue.Enqueue(7);
+            queue.Enqueue(8);
+            queue.Enqueue(9);
+            queue.Enqueue(10);
+        
+        RemoveCenter(5, queue);
+        foreach(int i in queue)
+            Console.WriteLine(i);
+        
+        timer.Stop();
+        //Console.WriteLine(timer.ElapsedMilliseconds.ToString("0.00ms"));
+        
+        void RemoveCenter<T>(int index, Queue<T> queue)
+        {
+            if(index < 0 || index >= queue.Count) throw new IndexOutOfRangeException();
+        
+            T[] array = new T[queue.Count];
+            queue.CopyTo(array, 0); 
+            queue.Clear(); 
+            for(int i = 0; i < array.Length; i++) 
+            {
+                if(i == index) continue; 
+                queue.Enqueue(array[i]);
+            }
+        }
     }
 
    
