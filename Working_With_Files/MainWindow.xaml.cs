@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.IO.Pipes;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -24,59 +25,72 @@ namespace Working_With_Files
 
         private void OnLogMessageClicked(object sender, RoutedEventArgs e)
         {
-            const string From = @"C:\Users\furqa\source\repos\CSharp\Working_With_Files\Working_With_Files.csproj";
-            const string To = @"C:\Users\furqa\Desktop\TestPapka";
+            const string From = @"C:\Rasmlar";
+            const string To = @"C:\Users\furqa\Desktop\TestPapka\Test2.txt";
 
-            DirectoryInfo source = new(From);
-           
-            var papkalar = source.GetDirectories();
-            var files = source.GetFiles();
+            var stream = new FileStream(To,FileMode.Open);
+            byte[] buffer = new byte[stream.Length];
 
-            foreach (FileInfo file in files)
-            {
-                string faylBoradiganJoy = Path.Combine(To, file.Name);
-                using (FileStream oqiydiganStream = file.OpenRead())
-                using (FileStream yozadiganStream = File.Create(faylBoradiganJoy))
-                    oqiydiganStream.CopyTo(yozadiganStream);
-                
-                file.Delete();
-            }
+            int read = stream.Read(buffer, 0, buffer.Length);
 
-           
-            foreach (DirectoryInfo subdirectory in papkalar)
-            {
-                string papkanIchidagiPapkalarBoradiganJoy = Path.Combine(To, subdirectory.Name);
-                PopkaniYoz(subdirectory.FullName, papkanIchidagiPapkalarBoradiganJoy);
-                subdirectory.Delete();
-            }
+            LogMessage(Encoding.UTF8.GetString(buffer));
+            
+            
 
-            static void PopkaniYoz(string originalPapkaTurganJoy, string popkaYoziladiganJoy)
-            {
-                Directory.CreateDirectory(popkaYoziladiganJoy);
 
-                foreach (string file in Directory.GetFiles(originalPapkaTurganJoy))
-                {
-                    string faylBoradiganJoy = Path.Combine("./", Path.GetFileName(file));
 
-                    using (FileStream oqiydiganStream = File.Open(file,FileMode.OpenOrCreate))
-                    using (FileStream yozadiganStream = File.Create(faylBoradiganJoy))
-                                oqiydiganStream.CopyTo(yozadiganStream);
 
-                    File.Delete(file);
-                }
 
-                foreach (string subdirectory in Directory.GetDirectories(originalPapkaTurganJoy))
-                {
-                    string ichidigiPopkaTuradiganJoy = Path.Combine(popkaYoziladiganJoy, Path.GetFileName(subdirectory));
-                    PopkaniYoz(subdirectory, ichidigiPopkaTuradiganJoy);
-                    Directory.Delete(subdirectory);
-                }
-            }
+            //DirectoryInfo source = new(From);
 
-            LogMessage("Ishladi");
+            //var papkalar = source.GetDirectories();
+            //var files = source.GetFiles();
+
+            //foreach (FileInfo file in files)
+            //{
+            //    string faylBoradiganJoy = Path.Combine(To, file.Name);
+            //    using (FileStream oqiydiganStream = file.OpenRead())
+            //    using (FileStream yozadiganStream = File.Create(faylBoradiganJoy))
+            //        oqiydiganStream.CopyTo(yozadiganStream);
+
+            //    file.Delete();
+            //}
+
+
+            //foreach (DirectoryInfo subdirectory in papkalar)
+            //{
+            //    string papkanIchidagiPapkalarBoradiganJoy = Path.Combine(To, subdirectory.Name);
+            //    PopkaniYoz(subdirectory.FullName, papkanIchidagiPapkalarBoradiganJoy);
+            //    subdirectory.Delete();
+            //}
+
+            //static void PopkaniYoz(string originalPapkaTurganJoy, string popkaYoziladiganJoy)
+            //{
+            //    Directory.CreateDirectory(popkaYoziladiganJoy);
+
+            //    foreach (string file in Directory.GetFiles(originalPapkaTurganJoy))
+            //    {
+            //        string faylBoradiganJoy = Path.Combine(To, Path.GetFileName(file));
+
+            //        using (FileStream oqiydiganStream = File.Open(file,FileMode.OpenOrCreate))
+            //        using (FileStream yozadiganStream = File.Create(faylBoradiganJoy))
+            //                    oqiydiganStream.CopyTo(yozadiganStream);
+
+            //        File.Delete(file);
+            //    }
+
+            //    foreach (string subdirectory in Directory.GetDirectories(originalPapkaTurganJoy))
+            //    {
+            //        string ichidigiPopkaTuradiganJoy = Path.Combine(popkaYoziladiganJoy, Path.GetFileName(subdirectory));
+            //        PopkaniYoz(subdirectory, ichidigiPopkaTuradiganJoy);
+            //        Directory.Delete(subdirectory);
+            //    }
+            //}
+
+            //LogMessage("Ishladi");
 
             //var file = new FileInfo(From);
-            
+
             //var stream = file.Open(FileMode.OpenOrCreate);
             //var stream = file.Open(FileMode.Append);
             //var stream = file.Open(FileMode.Create);
