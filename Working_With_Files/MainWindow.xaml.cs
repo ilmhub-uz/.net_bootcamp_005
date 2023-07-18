@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using System.Text;
 using System.Windows;
 
 namespace Working_With_Files
@@ -20,85 +22,87 @@ namespace Working_With_Files
             logTextBox.ScrollToEnd();
         }
 
-        private static int _counter = 0;
-
         private void OnLogMessageClicked(object sender, RoutedEventArgs e)
         {
+            const string From = @"C:\Users\furqa\source\repos\CSharp\Working_With_Files\Working_With_Files.csproj";
+            const string To = @"C:\Users\furqa\Desktop\TestPapka";
 
-            //Bizga ishlashimiz uchun Papka kerak bo'ladi
-            const  string path = @"C:\Example";
+            DirectoryInfo source = new(From);
+           
+            var papkalar = source.GetDirectories();
+            var files = source.GetFiles();
 
-            //DirectoryInfo Classdan obyekt yasaladi.
-            DirectoryInfo directoryInfo = new(path);
-
-            // Papkani bor yo'qligini tekshirib olamiz
-            if (directoryInfo.Exists)
+            foreach (FileInfo file in files)
             {
-                LogMessage("Papka topildi.");
-            }
-            else
-            {
-                directoryInfo.Create();
-                LogMessage("Papka Yaratildi.");
-            }
-
-            // Directoridan foydalanish
-            //if (Directory.Exists(path)) LogMessage("Papka bor.");
-            //else
-            //{
-            //    Directory.CreateDirectory(path);
-            //    LogMessage("Papka yaratildi.");
-            //}
-
-            // Papka haqidagi malumotlarni olamiz
-
-            //LogMessage("Directory Name: " + directoryInfo.Name);
-            //LogMessage("Full Path: " + directoryInfo.FullName);
-            //LogMessage("Parent Directory: " + directoryInfo.Parent);
-            //LogMessage("Creation Time: " + directoryInfo.CreationTime);
-            //LogMessage("Last Write Time: " + directoryInfo.LastWriteTime);
-            //LogMessage("Last Access Time: " + directoryInfo.LastAccessTime);
-            //Directory.SetLastAccessTime(path,new DateTime(2023,6,30));
-            //LogMessage($" Oxirgi kirilgan vaqti static classdan : {Directory.GetLastAccessTime(path)}");
-
-            //directoryInfo.CreateSubdirectory("videocha\\kinocha");
-            //LogMessage($"yangi papkacha ochildi");
-
-            //foreach (var sub in directoryInfo.GetDirectories())
-            //{
-            //    LogMessage($"Sub : {sub.Name}");
-            //}
-
-            //foreach (var file in directoryInfo.GetFiles())
-            //{
-            //    LogMessage($"{file.Name} {file.Extension} {file.CreationTimeUtc}");
-            //}
-
-            //foreach (var sub in Directory.GetDirectories(path))
-            //{
-            //    LogMessage(sub);
-            //}
-
-            //foreach (var file in Directory.GetFiles(path))
-            //{
-            //    LogMessage(file);
-            //}
-
-            //string newPath = @"C:\Example";
-            //if (Directory.Exists(path))
-            //{
-            //    _counter++;
-            //    Directory.Move(newPath,$"{path}{_counter}");
-            //}
+                string faylBoradiganJoy = Path.Combine(To, file.Name);
+                using (FileStream oqiydiganStream = file.OpenRead())
+                using (FileStream yozadiganStream = File.Create(faylBoradiganJoy))
+                    oqiydiganStream.CopyTo(yozadiganStream);
                 
-            //LogMessage("Papka yangi joyga ko'chirildi");
+                file.Delete();
+            }
 
-            directoryInfo.Delete();
-            LogMessage($"Papka o'chirildi");
+           
+            foreach (DirectoryInfo subdirectory in papkalar)
+            {
+                string papkanIchidagiPapkalarBoradiganJoy = Path.Combine(To, subdirectory.Name);
+                PopkaniYoz(subdirectory.FullName, papkanIchidagiPapkalarBoradiganJoy);
+                subdirectory.Delete();
+            }
 
-            Directory.Delete(path);
-            LogMessage("Papka Topilmadi");
+            static void PopkaniYoz(string originalPapkaTurganJoy, string popkaYoziladiganJoy)
+            {
+                Directory.CreateDirectory(popkaYoziladiganJoy);
+
+                foreach (string file in Directory.GetFiles(originalPapkaTurganJoy))
+                {
+                    string faylBoradiganJoy = Path.Combine("./", Path.GetFileName(file));
+
+                    using (FileStream oqiydiganStream = File.Open(file,FileMode.OpenOrCreate))
+                    using (FileStream yozadiganStream = File.Create(faylBoradiganJoy))
+                                oqiydiganStream.CopyTo(yozadiganStream);
+
+                    File.Delete(file);
+                }
+
+                foreach (string subdirectory in Directory.GetDirectories(originalPapkaTurganJoy))
+                {
+                    string ichidigiPopkaTuradiganJoy = Path.Combine(popkaYoziladiganJoy, Path.GetFileName(subdirectory));
+                    PopkaniYoz(subdirectory, ichidigiPopkaTuradiganJoy);
+                    Directory.Delete(subdirectory);
+                }
+            }
+
+            LogMessage("Ishladi");
+
+            //var file = new FileInfo(From);
+            
+            //var stream = file.Open(FileMode.OpenOrCreate);
+            //var stream = file.Open(FileMode.Append);
+            //var stream = file.Open(FileMode.Create);
+            //var stream = file.Open(FileMode.Open);
+            //var stream = file.Open(FileMode.CreateNew);
+            //var stream = file.Open(FileMode.Truncate);
+
+            //LogMessage($"{file.Name} {file.CreationTime}");
+
+            //var malumot2 = "salom";
+
+            //var bytes = Encoding.UTF8.GetBytes(malumot2);
+
+            //stream.Write(bytes,0,bytes.Length);
+            ////stream.Close();
+            //stream.Dispose();
+
+            //LogMessage("Faylga malumot yozildi.");
+
+            //File.AppendAllLines(From,malumot.Split("//"));
+            ////File.WriteAllBytes(To,bytes);
+            ////File.Copy(From,To);
+            //LogMessage("Ishladi");
+
         }
+
 
     }
 }
