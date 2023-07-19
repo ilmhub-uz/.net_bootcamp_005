@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
-using System.IO.Pipes;
-using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Windows;
 
@@ -17,249 +18,126 @@ namespace Working_With_Files
 
         private void Log(string message)
         {
-            logTextBox.AppendText($"Bu loggerdan Habar:{DateTime.UtcNow} \n {message}" 
-                                  + Environment.NewLine);
-
+            logTextBox.AppendText($"log :{DateTime.UtcNow} \n {message}\n");
             logTextBox.ScrollToEnd();
         }
 
-        private void OnLogMessageClicked(object sender, RoutedEventArgs e)
+        private async void OnLogMessageClicked(object sender, RoutedEventArgs e)
         {
-            //const string From = @"C:\Rasmlar";
-            //const string To = @"C:\Users\furqa\Desktop\TestPapka\Test2.txt";
-            ////const string filePath = @"C:\Users\furqa\OneDrive\Рабочий стол\TestPapka\Test.txt";
-            ////const string filePath2 = @"C:\Users\furqa\OneDrive\Рабочий стол\TestPapka\Test2.txt";
+            //// TCP Client yasaladi
+            //using TcpClient tcpClient = new ();
+            //var server = "www.google.com";
 
-            //var stream = new FileStream(To,FileMode.Open);
-            //byte[] buffer = new byte[stream.Length];
-            ////var malumot = @"// Directoridan foydalanish
-            //////if (Directory.Exists(path)) LogMessage(""Papka bor."");
-            //////else
-            //////{
-            //////    Directory.CreateDirectory(path);
-            //////    LogMessage(""Papka yaratildi."");
-            //////}
+            //await tcpClient.ConnectAsync(server, 80); // Server bilan port beriladi client yasash uchun
 
-            //int read = stream.Read(buffer, 0, buffer.Length);
-            //// Papka haqidagi malumotlarni olamiz
+            //// serverga bitta stream ochib olamiz
+            //var stream = tcpClient.GetStream();
 
-            ////LogMessage(""Directory Name: "" + directoryInfo.Name);
-            ////LogMessage(""Full Path: "" + directoryInfo.FullName);
-            ////LogMessage(""Parent Directory: "" + directoryInfo.Parent);
-            ////LogMessage(""Creation Time: "" + directoryInfo.CreationTime);
-            ////LogMessage(""Last Write Time: "" + directoryInfo.LastWriteTime);
-            ////LogMessage(""Last Access Time: "" + directoryInfo.LastAccessTime);
-            ////Directory.SetLastAccessTime(path,new DateTime(2023,6,30));
-            ////LogMessage($"" Oxirgi kirilgan vaqti static classdan : {Directory.GetLastAccessTime(path)}"");
+            ////requestni stringa yozib olamiz
+            //var message = $"GET / HTTP/1.1\r\nHost: {server}\r\nConnection: Close\r\n\r\n";
 
-            ////directoryInfo.CreateSubdirectory(""videocha\\kinocha"");
-            ////LogMessage($""yangi papkacha ochildi"");
+            //await using var writer = new StreamWriter(stream);
+            //// sobsheniyani serverga jo'natamiz
+            //await writer.WriteAsync(message);
+            //// Stream bufferni tozaliydi lekin streamni yopmiydi.
+            //await writer.FlushAsync();
 
-            ////foreach (var sub in directoryInfo.GetDirectories())
-            ////{
-            ////    LogMessage($""Sub : {sub.Name}"");
-            ////}
+            //using var reader = new StreamReader(stream);
 
-            ////foreach (var file in directoryInfo.GetFiles())
-            ////{
-            ////    LogMessage($""{file.Name} {file.Extension} {file.CreationTimeUtc}"");
-            ////}
+            //// server qaytargan javobni o'qib olamiz string ko'rinishida
+            //var response = await reader.ReadToEndAsync();
 
-            ////foreach (var sub in Directory.GetDirectories(path))
-            ////{
-            ////    LogMessage(sub);
-            ////}
-
-            ////foreach (var file in Directory.GetFiles(path))
-            ////{
-            ////    LogMessage(file);
-            ////}
-
-            ////string newPath = @""C:\Example"";
-            ////if (Directory.Exists(path))
-            ////{
-            ////    _counter++;
-            ////    Directory.Move(newPath,$""{path}{_counter}"");
-            ////}
-                
-            ////LogMessage(""Papka yangi joyga ko'chirildi"");
-
-            ////directoryInfo.Delete();
-            ////Log($""Papka o'chirildi"");
-
-            ////Directory.Delete(path);
-            ////Log(""Papka Topilmadi"");";
-
-            //var file = new FileInfo(filePath);
-
-            // ---------------------------File Write Alltext bilan yasash -------------------------------------------------//
-
-            // Yangi Fayl yasab unga Text ko'rinishida malumotlarni yozadi agar fayl uja bo'sa uni qaytadan yozvoradi
-
-            //File.WriteAllText(filePath,malumot);
-            //Log("Text Fayl Wrtie AllText Orqali yasaldi");
-
-            //--------------------------------File AppendAllText ---------------------------------------------------------//
-
-            // Yangi Fayl yasab unga Text ko'rinishida malumotlarni yozadi agar fayl uja bo'sa uni davomiga yozvoradi
-            //File.AppendAllText(filePath, malumot + Environment.NewLine);
-            //Log("Text Fayl Append AllText Orqali yasaldi");
-
-            //// ---------------------------File Create Methodi Orqali --------------------------------------------------//
-
-            //FileStream fileStream = File.Create(filePath);
-            //fileStream.Close(); // Fayl Streamni yopadi va resurslarni tozalaydi.
-            //fileStream.Dispose(); // Fayl Streamni barcha resurslarini tozalab beradi.
-
-            //Log("Text Fayl Create Methodi bilan yasaldi");
-
-            //// ------------------------------File Write All Bytes orqali ----------------------------------------------------// 
-
-            //string filePath2 = @"C:\Users\furqa\OneDrive\Рабочий стол\TestPapka\example.bin";
-            //byte[] data = { 0x48, 0x65, 0x6C, 0x6C, 0x6F }; // "Hello" in ASCII bytes
-
-            //// Yangi Fayl yasab unga byte ko'rinishida malumotlarni yozadi agar fayl uja bo'sa uni qaytadan yozvoradi
-            //File.WriteAllBytes(filePath2, data);
-
-            //Log($"Byte File yasaldi {DateTime.Now}");
-
-            //LogMessage(Encoding.UTF8.GetString(buffer));
-            
-            
-            // -------------------------------Move to Methodi original faylni boshqa joyga ko'chiradi eskisini udalit qiladi ----------------------//
-            //file.MoveTo(filePath);
-            //Log("Fayl joyi o'zgartirildi");
-
-            // ------------------------------------Copy to methodi ------------------------------------------------------------------------------//
-            //if (!File.Exists(filePath2))
-            //{
-            //    file.CopyTo(filePath2);
-            //    Log("Kopiya fayl yasaldi");
-            //}
-            //else
-            //{
-            //    using var stream = file.AppendText();
-            //    stream.WriteLine("Fayl uja bor ekan undan kopiy aolib bo'lmaydi");
-            //    Log("Fayl o'zgartitildi");
-            //}
-
-            
-
-            // ------------------------------------------------------------- FileStream Bilan Ishlash -----------------------------------------------------------------//
-
-            //----------------------------File Modes tushuntirilgan --------------------------------//
-
-            // var stream  = file.Open(FileMode.Create); // Har Safar faylni ichini o'chirib yenginarsa yozadi.
-            // var stream = file.Open(FileMode.CreateNew); // Har Safar yangi fayl yozishga hrakat qiladi agar fayl bosa Exception otadi.
-            // var stream = file.Open(FileMode.OpenOrCreate); // Fayl oldindan bo'sa ochadi bo'masa yengi yasiydi.
-            // var stream = file.Open(FileMode.Truncate); // Bor faylli ochadi va uni ichini tozalab tashiydi 
-            // var stream = file.Open(FileMode.Append); //Fayl bor bo'sa ochib ichiga malumotni ochirmasdan davomiga yozib ketadi.
+            //Log(response);
 
 
+            var tcpListener = new TcpListener(IPAddress.Any, 8888);
 
-            //DirectoryInfo source = new(From);
+            var words = new Dictionary<string, string>()
+            {
+                { "red", "qizil" },
+                { "blue", "ko'k" },
+                { "green", "yashil"},
+                { "black", "qora"},
+                { "white", "oq"},
+                { "silver", "kumush rang"},
+                { "yellow", "sariq"},
+                { "pink", "pushti"}
+            };
 
-            //var papkalar = source.GetDirectories();
-            //var files = source.GetFiles();
+            try
+            {
+                tcpListener.Start();    // запускаем сервер
+                Log("Server ishga tushirildi. Ulanishni kutyapti... ");
 
-            //foreach (FileInfo file in files)
-            //{
-            //    string faylBoradiganJoy = Path.Combine(To, file.Name);
-            //    using (FileStream oqiydiganStream = file.OpenRead())
-            //    using (FileStream yozadiganStream = File.Create(faylBoradiganJoy))
-            //        oqiydiganStream.CopyTo(yozadiganStream);
+                while (true)
+                {
+                    // получаем подключение в виде TcpClient
+                    using var tcpClient = await tcpListener.AcceptTcpClientAsync();
+                    // NetworkStream dan obyekt yasaldi client bilan ishlash uchun
+                    var stream = tcpClient.GetStream();
 
-            //    file.Delete();
-            //}
-            // var bytes = Encoding.UTF8.GetBytes(malumot);
+                    // StreamReader yasaymiz malumotlarni o'qib olsh uchun
+                    using var streamReader = new StreamReader(stream);
+                    // StreamWriter yasaymiz oq'ib olgan malumotlarni jo'natish uchun
+                    await using var streamWriter = new StreamWriter(stream);
 
+                    while (true)
+                    {
+                        // so'ralgan so'zni o'qib olamiz
+                        var word = await streamReader.ReadLineAsync();
 
-            //foreach (DirectoryInfo subdirectory in papkalar)
-            //{
-            //    string papkanIchidagiPapkalarBoradiganJoy = Path.Combine(To, subdirectory.Name);
-            //    PopkaniYoz(subdirectory.FullName, papkanIchidagiPapkalarBoradiganJoy);
-            //    subdirectory.Delete();
-            //}
-            //stream.Write(bytes, 0, bytes.Length);
-            //stream.Close();
-            //Log("Fayl yasaldi");
+                        // Agar END so'zi kiritilgan bo'sa loopdan chiqamiz va client bilan aloqani uzamiz
+                        if (word == "END") break;
 
-            //static void PopkaniYoz(string originalPapkaTurganJoy, string popkaYoziladiganJoy)
-            //{
-            //    Directory.CreateDirectory(popkaYoziladiganJoy);
+                        Log($"Shu so'zni tarjimasi so'raldi :  {word}");
 
-            //    foreach (string file in Directory.GetFiles(originalPapkaTurganJoy))
-            //    {
-            //        string faylBoradiganJoy = Path.Combine(To, Path.GetFileName(file));
+                        // Dictionarydan so'zni qidiramiz va clientga tarjimasini jo'natamiz
+                        if (word is null || !words.TryGetValue(word, out var translation))
+                            translation = "tarjima topilmadi!!!!";
 
-            //        using (FileStream oqiydiganStream = File.Open(file,FileMode.OpenOrCreate))
-            //        using (FileStream yozadiganStream = File.Create(faylBoradiganJoy))
-            //                    oqiydiganStream.CopyTo(yozadiganStream);
-
-            //        File.Delete(file);
-            //    }
-
-            //    foreach (string subdirectory in Directory.GetDirectories(originalPapkaTurganJoy))
-            //    {
-            //        string ichidigiPopkaTuradiganJoy = Path.Combine(popkaYoziladiganJoy, Path.GetFileName(subdirectory));
-            //        PopkaniYoz(subdirectory, ichidigiPopkaTuradiganJoy);
-            //        Directory.Delete(subdirectory);
-            //    }
-            //}
-            //----------------------------Faylarni ko'chirildi --------------------------------------------------------------//
-            //var faylPath = @"C:\Users\furqa\OneDrive\Изображения\Снимки экрана";
-            //var adressToMove = @"C:\Users\furqa\OneDrive\Рабочий стол\TestPapka";
-
-            //LogMessage("Ishladi");
-
-            //var file = new FileInfo(From);
-
-            //var stream = file.Open(FileMode.OpenOrCreate);
-            //var stream = file.Open(FileMode.Append);
-            //var stream = file.Open(FileMode.Create);
-            //var stream = file.Open(FileMode.Open);
-            //var stream = file.Open(FileMode.CreateNew);
-            //var stream = file.Open(FileMode.Truncate);
-
-            //LogMessage($"{file.Name} {file.CreationTime}");
-
-            //var malumot2 = "salom";
-
-            //var bytes = Encoding.UTF8.GetBytes(malumot2);
-            //var files = new DirectoryInfo(faylPath).GetFiles();
-
-            //stream.Write(bytes,0,bytes.Length);
-            ////stream.Close();
-            //stream.Dispose();
-
-            //LogMessage("Faylga malumot yozildi.");
-            //if (Directory.Exists(faylPath))
-            //{
-            //    foreach (var rasm in files)
-            //    {
-            //        rasm.MoveTo($@"{adressToMove}\{rasm.Name}");
-            //        Log("rasm ko'chirildi");
-            //    }
-            //}
-
-            // ------------------------------------------------------------------ Memory Stream --------------------------------------------------------------------//
-
-            //File.AppendAllLines(From,malumot.Split("//"));
-            ////File.WriteAllBytes(To,bytes);
-            ////File.Copy(From,To);
-            //LogMessage("Ishladi");
-            //using MemoryStream memoryStream = new ();
-            //byte[] bytes = System.Text.Encoding.UTF8.GetBytes(malumot);
-            //memoryStream.Write(bytes, 0, bytes.Length);
-
+                        // agar tarjima bo'sa orqaga jo'natamiz
+                        await streamWriter.WriteLineAsync(translation);
+                        // bufferni tozaliymiz lekin streamni yopmiymiz
+                        await streamWriter.FlushAsync();
+                    }
+                }
+            }
+            finally
+            {
+                // serverni to'xtatadi
+                tcpListener.Stop();
+            }
         }
-            //byte[] buffer = memoryStream.ToArray();
-            //string memoryContent = System.Text.Encoding.UTF8.GetString(buffer);
-            //Log("Memory Contents:");
-            //Log(memoryContent);
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // tarjimaga jo'natiladigan so'zlar
+            var words = new [] { "red", "yellow", "blue","white", "brown" , "silver", "black" ,"pink" , "purple" };
+
+            using TcpClient tcpClient = new ();
+            await tcpClient.ConnectAsync("127.0.0.1", 8888);
+
+            // NetworkStream yasiymiz server bilan bog'lanish uchun
+            var stream = tcpClient.GetStream();
+
+            // StreamReader malumotlarni o'qib olish uchun kerak
+            using var streamReader = new StreamReader(stream);
+            //StreamWriter malumotlarni jo'natish uchun kerak
+            await using var streamWriter = new StreamWriter(stream);
+
+            foreach (var word in words)
+            {
+                // serverga so'zni tarjima qilishga jo'natamiz
+                await streamWriter.WriteLineAsync(word);
+                await streamWriter.FlushAsync();
+
+                // serverdan tarjiamni o'qib olamiz
+                var translation = await streamReader.ReadLineAsync();
+                Log($"{word} - {translation}");
+            }
+            // serverga client bilan aloqani uzush uchun signal jo'natamiz
+            await streamWriter.WriteLineAsync("END");
+            await streamWriter.FlushAsync();
+        }
     }
 }
-
-
-
-
