@@ -3,13 +3,28 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Working_With_Files"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Icon="/cli-tools.jpg">
     <Grid Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
-        <TextBox x:Name="logTextBox" VerticalScrollBarVisibility="Auto" IsReadOnly="True" BorderBrush="Black" Background="#FFE6F9F9" Margin="0,0,0,68" />
-        <Button Content="Serverni ishga tushir"  HorizontalAlignment="Left" Margin="150,381,0,23" Width="173" Background="#FF2BFF00" BorderThickness="2,2,2,2" Click="Button_Click"/>
-        <Button Content="Text Clientni ishga tushir" Margin="477,381,150,23"  Background="#FF02F5EF" BorderThickness="2,2,2,2" Click="Button_Click_1"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="403*"/>
+            <ColumnDefinition Width="397*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="logTextBox" VerticalScrollBarVisibility="Auto" IsReadOnly="True" BorderBrush="Black" Background="#FFE6F9F9" Margin="10,40,12,58" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5" FontSize="20" FontWeight="Bold" FontFamily="Segoe UI Variable Display Semibold">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-0.148"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.472"/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <TextBox x:Name="InputTextBox" HorizontalAlignment="Left" BorderBrush="Black" VerticalAlignment="Bottom" Margin="10,0,0,396"
+                 Grid.Column="0" BorderThickness="2,2,2,2" Grid.ColumnSpan="2" Width="780" Height="38" FontFamily="Segoe UI Black" FontSize="14" FontWeight="Bold" />
+        <Button Grid.Column="0" Content="Encrypt" HorizontalAlignment="Left" Height="31" Margin="60,383,0,0" VerticalAlignment="Top" Width="215" Click="EncryptButton_Click" Background="#FF07F9E9"/>
+        <Button Grid.Column="1" Content="Decrypt" Height="31" Margin="122,383,60,0" VerticalAlignment="Top" Click="DecryptButton_Click" Background="#FF53FF07"/>
+
     </Grid>
 </Window>
 

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using System.Net.Sockets;
-using System.Threading.Tasks;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows;
 
 namespace Working_With_Files
@@ -18,163 +16,72 @@ namespace Working_With_Files
 
         private void Log(string message)
         {
-            logTextBox.AppendText($"log :{DateTime.UtcNow} \n {message}\n");
+            logTextBox.AppendText(message);
+            logTextBox.LineDown();
             logTextBox.ScrollToEnd();
         }
 
-        private async  void Button_Click(object sender, RoutedEventArgs e)
+        private void EncryptButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                await ServerniIshgaTushir();
-            }
-            catch (Exception exception)
-            {
-               Log(exception.Message);
-            }
+            string textToEncrypt = InputTextBox.Text;
+            string encryptedText = Encrypt(textToEncrypt);
+            Log(encryptedText);
         }
 
-        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        private void DecryptButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                await ClientIshlatish();
-            }
-            catch (Exception exception)
-            {
-                Log(exception.Message);
-            }
+            string encryptedText = logTextBox.Text;
+            string decryptedText = Decrypt(encryptedText);
+            Log(decryptedText);
         }
 
-        private async Task ServerniIshgaTushir()
+        private string Encrypt(string plainText)
         {
-            #region NetWorkStream Simple Example
+            byte[] encryptedBytes;
+            byte[] iv;
 
-            //// TCP Client yasaladi
-            //using TcpClient tcpClient = new ();
-            //var server = "www.google.com";
-
-            //await tcpClient.ConnectAsync(server, 80); // Server bilan port beriladi client yasash uchun
-
-            //// serverga bitta stream ochib olamiz
-            //var stream = tcpClient.GetStream();
-
-            ////requestni stringa yozib olamiz
-            //var message = $"GET / HTTP/1.1\r\nHost: {server}\r\nConnection: Close\r\n\r\n";
-
-            //await using var writer = new StreamWriter(stream);
-            //// sobsheniyani serverga jo'natamiz
-            //await writer.WriteAsync(message);
-            //// Stream bufferni tozaliydi lekin streamni yopmiydi.
-            //await writer.FlushAsync();
-
-            //using var reader = new StreamReader(stream);
-
-            //// server qaytargan javobni o'qib olamiz string ko'rinishida
-            //var response = await reader.ReadToEndAsync();
-
-            //Log(response);
-
-            #endregion
-
-            #region NetWorkStream Text bilan sihlashi
-
-            var tcpListener = new TcpListener(IPAddress.Any, 8888);
-
-            var words = new Dictionary<string, string>()
+            using (Aes aes = Aes.Create())
             {
-                { "red", "qizil" },
-                { "blue", "ko'k" },
-                { "green", "yashil"},
-                { "black", "qora"},
-                { "white", "oq"},
-                { "silver", "kumush rang"},
-                { "yellow", "sariq"},
-                { "pink", "pushti"}
-            };
+                aes.Key = Encoding.UTF8.GetBytes("Assalomu Alaykum"); // shifrlash uchun kalit so'zi
+                iv = aes.IV;
 
-            try
-            {
-                tcpListener.Start();    // запускаем сервер
-                Log("Server ishga tushirildi. Ulanishni kutyapti... ");
-
-                while (true)
-                {
-                    // TcpClient orqali stream olamiz
-                    using var tcpClient = await tcpListener.AcceptTcpClientAsync();
-                    // NetworkStream dan obyekt yasaldi client bilan ishlash uchun
-                    var stream = tcpClient.GetStream();
-
-                    // StreamReader yasaymiz malumotlarni o'qib olsh uchun
-                    using var streamReader = new StreamReader(stream);
-                    // StreamWriter yasaymiz oq'ib olgan malumotlarni jo'natish uchun
-                    await using var streamWriter = new StreamWriter(stream);
-
-                    while (true)
-                    {
-                        // so'ralgan so'zni o'qib olamiz
-                        var word = await streamReader.ReadLineAsync();
-
-                        // Agar END so'zi kiritilgan bo'sa loopdan chiqamiz va client bilan aloqani uzamiz
-                        if (word == "END") break;
-
-                        Log($"Shu so'zni tarjimasi so'raldi :  {word}");
-
-                        // Dictionarydan so'zni qidiramiz va clientga tarjimasini jo'natamiz
-                        if (word is null || !words.TryGetValue(word, out var translation))
-                            translation = "tarjima topilmadi!!!!";
-
-                        // agar tarjima bo'sa orqaga jo'natamiz
-                        await streamWriter.WriteLineAsync(translation);
-                        // bufferni tozaliymiz lekin streamni yopmiymiz
-                        await streamWriter.FlushAsync();
-                    }
-                }
-            }
-            finally
-            {
-                // serverni to'xtatadi
-                tcpListener.Stop();
+                using MemoryStream memoryStream = new();
+                using CryptoStream cryptoStream = new(memoryStream, aes.CreateEncryptor(), CryptoStreamMode.Write);
+                byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
+                cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
+                cryptoStream.FlushFinalBlock();
+                encryptedBytes = memoryStream.ToArray();
             }
 
-            #endregion
+            byte[] combinedBytes = new byte[iv.Length + encryptedBytes.Length];
+            Array.Copy(iv, 0, combinedBytes, 0, iv.Length);
+            Array.Copy(encryptedBytes, 0, combinedBytes, iv.Length, encryptedBytes.Length);
 
+            return Convert.ToBase64String(combinedBytes);
         }
 
-        record Product(string Id, string Name, string Company, int Count, decimal Price);
-
-        #region TextClient
-        private async Task ClientIshlatish()
+        private string Decrypt(string encryptedText)
         {
-            // tarjimaga jo'natiladigan so'zlar
-            var words = new[] { "red", "yellow", "blue", "white", "brown", "silver", "black", "pink", "purple" };
+            byte[] combinedBytes = Convert.FromBase64String(encryptedText);
 
-            using TcpClient tcpClient = new();
-            await tcpClient.ConnectAsync("127.0.0.1", 8888);
+            byte[] iv = new byte[16];
+            byte[] encryptedBytes = new byte[combinedBytes.Length - iv.Length];
+            Array.Copy(combinedBytes, 0, iv, 0, iv.Length);
+            Array.Copy(combinedBytes, iv.Length, encryptedBytes, 0, encryptedBytes.Length);
 
-            // NetworkStream yasiymiz server bilan bog'lanish uchun
-            var stream = tcpClient.GetStream();
+            using Aes aes = Aes.Create();
+            aes.Key = Encoding.UTF8.GetBytes("Assalomu Alaykum"); // Shifr kalit so'zi kerak bo'ladi
+            aes.IV = iv;
 
-            // StreamReader malumotlarni o'qib olish uchun kerak
-            using var streamReader = new StreamReader(stream);
-            //StreamWriter malumotlarni jo'natish uchun kerak
-            await using var streamWriter = new StreamWriter(stream);
-
-            foreach (var word in words)
+            using MemoryStream memoryStream = new();
+            using (CryptoStream cryptoStream = new(memoryStream, aes.CreateDecryptor(), CryptoStreamMode.Write))
             {
-                // serverga so'zni tarjima qilishga jo'natamiz
-                await streamWriter.WriteLineAsync(word);
-                await streamWriter.FlushAsync();
-
-                // serverdan tarjiamni o'qib olamiz
-                var translation = await streamReader.ReadLineAsync();
-                Log($"{word} - {translation}");
+                cryptoStream.Write(encryptedBytes, 0, encryptedBytes.Length);
+                cryptoStream.FlushFinalBlock();
             }
-            // serverga client bilan aloqani uzush uchun signal jo'natamiz
-            await streamWriter.WriteLineAsync("END");
-            await streamWriter.FlushAsync();
-        }
+            string decryptedText = Encoding.UTF8.GetString(memoryStream.ToArray());
 
-        #endregion
+            return decryptedText;
+        }
     }
 }
