@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
 using System.Linq;
@@ -25,98 +26,47 @@ namespace Working_With_Files
 
         private void OnLogMessageClicked(object sender, RoutedEventArgs e)
         {
-            const string From = @"C:\Rasmlar";
-            const string To = @"C:\Users\furqa\Desktop\TestPapka\Test2.txt";
 
-            var stream = new FileStream(To,FileMode.Open);
-            byte[] buffer = new byte[stream.Length];
-
-            int read = stream.Read(buffer, 0, buffer.Length);
-
-            LogMessage(Encoding.UTF8.GetString(buffer));
-            
-            
-
-
-
-
-
-            //DirectoryInfo source = new(From);
-
-            //var papkalar = source.GetDirectories();
-            //var files = source.GetFiles();
-
-            //foreach (FileInfo file in files)
+            //using(FileStream filestream=new FileStream(@"D:\MyFile\myfile.txt",FileMode.OpenOrCreate))
             //{
-            //    string faylBoradiganJoy = Path.Combine(To, file.Name);
-            //    using (FileStream oqiydiganStream = file.OpenRead())
-            //    using (FileStream yozadiganStream = File.Create(faylBoradiganJoy))
-            //        oqiydiganStream.CopyTo(yozadiganStream);
+            //    string s = "ygurhjfedshkngwrilkfmdcjbknndfskljnw.k" +
+            //               "hgikjrefndj5123154685ergfn" +
+            //               "ger.mf";
+            //    byte[] bytes=Encoding.UTF8.GetBytes(s);
 
-            //    file.Delete();
+            //    filestream.Write(bytes,0,bytes.Length);
             //}
 
-
-            //foreach (DirectoryInfo subdirectory in papkalar)
+            //using (StreamWriter sw = new StreamWriter(@"D:\MyFile\myfile.txt"))
             //{
-            //    string papkanIchidagiPapkalarBoradiganJoy = Path.Combine(To, subdirectory.Name);
-            //    PopkaniYoz(subdirectory.FullName, papkanIchidagiPapkalarBoradiganJoy);
-            //    subdirectory.Delete();
+            //    sw.WriteLine("filega yozamiz");
             //}
 
-            //static void PopkaniYoz(string originalPapkaTurganJoy, string popkaYoziladiganJoy)
+            //File.AppendAllText(@"D:\MyFile\myfile.txt", "SAmandar,fdb");
+
+
+            //using var memoryStream = new MemoryStream();
+            //using var someFile1 = new FileStream(@"C:\\Users\\furqa\\Desktop\\TestPapka\\windowsback1.jpg", FileMode.Open, FileAccess.Read);
             //{
-            //    Directory.CreateDirectory(popkaYoziladiganJoy);
+            //    someFile1.CopyTo(memoryStream);
 
-            //    foreach (string file in Directory.GetFiles(originalPapkaTurganJoy))
+            //    using var someFile2 = new FileStream(@"C:\\Users\\furqa\\Desktop\\TestPapka\\windowsback2.jpg",
+            //        FileMode.Create, FileAccess.Write);
             //    {
-            //        string faylBoradiganJoy = Path.Combine(To, Path.GetFileName(file));
-
-            //        using (FileStream oqiydiganStream = File.Open(file,FileMode.OpenOrCreate))
-            //        using (FileStream yozadiganStream = File.Create(faylBoradiganJoy))
-            //                    oqiydiganStream.CopyTo(yozadiganStream);
-
-            //        File.Delete(file);
-            //    }
-
-            //    foreach (string subdirectory in Directory.GetDirectories(originalPapkaTurganJoy))
-            //    {
-            //        string ichidigiPopkaTuradiganJoy = Path.Combine(popkaYoziladiganJoy, Path.GetFileName(subdirectory));
-            //        PopkaniYoz(subdirectory, ichidigiPopkaTuradiganJoy);
-            //        Directory.Delete(subdirectory);
+            //        someFile1.CopyTo(someFile2);
             //    }
             //}
 
-            //LogMessage("Ishladi");
+            //using var memoryStream = new MemoryStream();
+            //using var someFile1 = new FileStream(@"C:\\Users\\furqa\\Desktop\\TestPapka\\windowsback1.jpg", FileMode.Open, FileAccess.Read);
+            //someFile1.CopyTo(memoryStream);
 
-            //var file = new FileInfo(From);
-
-            //var stream = file.Open(FileMode.OpenOrCreate);
-            //var stream = file.Open(FileMode.Append);
-            //var stream = file.Open(FileMode.Create);
-            //var stream = file.Open(FileMode.Open);
-            //var stream = file.Open(FileMode.CreateNew);
-            //var stream = file.Open(FileMode.Truncate);
-
-            //LogMessage($"{file.Name} {file.CreationTime}");
-
-            //var malumot2 = "salom";
-
-            //var bytes = Encoding.UTF8.GetBytes(malumot2);
-
-            //stream.Write(bytes,0,bytes.Length);
-            ////stream.Close();
-            //stream.Dispose();
-
-            //LogMessage("Faylga malumot yozildi.");
-
-            //File.AppendAllLines(From,malumot.Split("//"));
-            ////File.WriteAllBytes(To,bytes);
-            ////File.Copy(From,To);
-            //LogMessage("Ishladi");
-
+            //using var someFile2 = new FileStream(@"C:\\Users\\furqa\\Desktop\\TestPapka\\windowsback2.jpg",
+            //    FileMode.Create, FileAccess.Write);
+            //memoryStream.Seek(0, SeekOrigin.Begin); // Reset the memoryStream position to the beginning
+            //memoryStream.CopyTo(someFile2);
+            ////someFile1.CopyTo(someFile2); /// ishlamidi
         }
-
 
     }
 }
