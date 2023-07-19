@@ -71,7 +71,7 @@ namespace Working_With_Files
             Array.Copy(iv, 0, combinedBytes, 0, iv.Length);
             // encrypt qilingan arrayni kopiya qiladi
             Array.Copy(encryptedBytes, 0, combinedBytes, iv.Length, encryptedBytes.Length);
-            // Rezultati ABse string 64 da qaytariladi yanada havfsiz bo'lishi uchun
+            // Rezultati Base string 64 da qaytariladi yanada havfsiz bo'lishi uchun
             return Convert.ToBase64String(combinedBytes);
         }
 
