@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Working_With_Files": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

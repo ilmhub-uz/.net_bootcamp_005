@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800" Icon="/cli-tools.jpg">
     <Grid>
         <TextBox x:Name="logTextBox" VerticalScrollBarVisibility="Auto" IsReadOnly="True" />
-        <Button Content="Papka yasa va Log qil" Click="OnLogMessageClicked" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,346,0,0" Width="334" Height="60" />
+        <Button Content="Fayl yasa va Log qil" Click="OnLogMessageClicked" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="48,346,0,0" Width="334" Height="60" />
     </Grid>
 </Window>
 
