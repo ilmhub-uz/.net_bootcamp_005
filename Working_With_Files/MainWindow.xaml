@@ -6,25 +6,28 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Icon="/cli-tools.jpg">
     <Grid Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="403*"/>
-            <ColumnDefinition Width="397*"/>
-        </Grid.ColumnDefinitions>
-        <TextBox x:Name="logTextBox" VerticalScrollBarVisibility="Auto" IsReadOnly="True" BorderBrush="Black" Background="#FFE6F9F9" Margin="10,40,12,58" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5" FontSize="20" FontWeight="Bold" FontFamily="Segoe UI Variable Display Semibold">
-            <TextBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleX="-0.148"/>
-                    <RotateTransform/>
-                    <TranslateTransform X="0.472"/>
-                </TransformGroup>
-            </TextBox.RenderTransform>
-        </TextBox>
-        <TextBox x:Name="InputTextBox" HorizontalAlignment="Left" BorderBrush="Black" VerticalAlignment="Bottom" Margin="10,0,0,396"
-                 Grid.Column="0" BorderThickness="2,2,2,2" Grid.ColumnSpan="2" Width="780" Height="38" FontFamily="Segoe UI Black" FontSize="14" FontWeight="Bold" />
-        <Button Grid.Column="0" Content="Encrypt" HorizontalAlignment="Left" Height="31" Margin="60,383,0,0" VerticalAlignment="Top" Width="215" Click="EncryptButton_Click" Background="#FF07F9E9"/>
-        <Button Grid.Column="1" Content="Decrypt" Height="31" Margin="122,383,60,0" VerticalAlignment="Top" Click="DecryptButton_Click" Background="#FF53FF07"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+           
+            <RowDefinition Height="*"/>
+            
+            <RowDefinition Height="Auto"/>
+           
+        </Grid.RowDefinitions>
 
+        <TextBox x:Name="InputTextBox" HorizontalAlignment="Left" BorderBrush="Black" VerticalAlignment="Top"
+                 Margin="10,10,0,0" Grid.Row="0" BorderThickness="2,2,2,2" Width="780" Height="38"
+                 FontFamily="Segoe UI Black" FontSize="14" FontWeight="Bold"/>
+
+        <TextBox x:Name="logTextBox" VerticalScrollBarVisibility="Auto" IsReadOnly="True" BorderBrush="Black"
+                 Background="#FFE6F9F9" Margin="10,0,10,0" Grid.Row="1" FontSize="20" FontWeight="Bold"
+                 FontFamily="Segoe UI Variable Display Semibold"/>
+
+        <Button Grid.Row="2" Content="Encrypt" HorizontalAlignment="Left" Height="31" Width="215"
+                Margin="10,0,0,10" Click="EncryptButton_Click" Background="#FF07F9E9"/>
+        <Button Grid.Row="2" Content="Decrypt" Height="31" Width="215" HorizontalAlignment="Right"
+                Margin="0,0,10,10" Click="DecryptButton_Click" Background="#FF53FF07"/>
     </Grid>
 </Window>
+
 
