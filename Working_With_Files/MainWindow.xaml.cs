@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace Working_With_Files
@@ -22,8 +22,34 @@ namespace Working_With_Files
             logTextBox.ScrollToEnd();
         }
 
-        private async void OnLogMessageClicked(object sender, RoutedEventArgs e)
+        private async  void Button_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                await ServerniIshgaTushir();
+            }
+            catch (Exception exception)
+            {
+               Log(exception.Message);
+            }
+        }
+
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                await ClientIshlatish();
+            }
+            catch (Exception exception)
+            {
+                Log(exception.Message);
+            }
+        }
+
+        private async Task ServerniIshgaTushir()
+        {
+            #region NetWorkStream Simple Example
+
             //// TCP Client yasaladi
             //using TcpClient tcpClient = new ();
             //var server = "www.google.com";
@@ -49,6 +75,9 @@ namespace Working_With_Files
 
             //Log(response);
 
+            #endregion
+
+            #region NetWorkStream Text bilan sihlashi
 
             var tcpListener = new TcpListener(IPAddress.Any, 8888);
 
@@ -71,7 +100,7 @@ namespace Working_With_Files
 
                 while (true)
                 {
-                    // получаем подключение в виде TcpClient
+                    // TcpClient orqali stream olamiz
                     using var tcpClient = await tcpListener.AcceptTcpClientAsync();
                     // NetworkStream dan obyekt yasaldi client bilan ishlash uchun
                     var stream = tcpClient.GetStream();
@@ -107,14 +136,20 @@ namespace Working_With_Files
                 // serverni to'xtatadi
                 tcpListener.Stop();
             }
+
+            #endregion
+
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        record Product(string Id, string Name, string Company, int Count, decimal Price);
+
+        #region TextClient
+        private async Task ClientIshlatish()
         {
             // tarjimaga jo'natiladigan so'zlar
-            var words = new [] { "red", "yellow", "blue","white", "brown" , "silver", "black" ,"pink" , "purple" };
+            var words = new[] { "red", "yellow", "blue", "white", "brown", "silver", "black", "pink", "purple" };
 
-            using TcpClient tcpClient = new ();
+            using TcpClient tcpClient = new();
             await tcpClient.ConnectAsync("127.0.0.1", 8888);
 
             // NetworkStream yasiymiz server bilan bog'lanish uchun
@@ -139,5 +174,7 @@ namespace Working_With_Files
             await streamWriter.WriteLineAsync("END");
             await streamWriter.FlushAsync();
         }
+
+        #endregion
     }
 }

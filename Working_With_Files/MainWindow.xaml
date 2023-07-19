@@ -8,8 +8,8 @@
         Title="MainWindow" Height="450" Width="800" Icon="/cli-tools.jpg">
     <Grid Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
         <TextBox x:Name="logTextBox" VerticalScrollBarVisibility="Auto" IsReadOnly="True" BorderBrush="Black" Background="#FFE6F9F9" Margin="0,0,0,68" />
-        <Button Content="Serverni ishga tushir" Click="OnLogMessageClicked" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="227,381,0,0" Width="173" Height="30" Background="#FF2BFF00" BorderThickness="2,2,2,2"/>
-        <Button Content="Clientni ishga tushir" HorizontalAlignment="Left" Height="30" Margin="405,381,0,0" VerticalAlignment="Top" Width="173" Click="Button_Click" Background="#FF02F5EF" BorderThickness="2,2,2,2"/>
+        <Button Content="Serverni ishga tushir"  HorizontalAlignment="Left" Margin="150,381,0,23" Width="173" Background="#FF2BFF00" BorderThickness="2,2,2,2" Click="Button_Click"/>
+        <Button Content="Text Clientni ishga tushir" Margin="477,381,150,23"  Background="#FF02F5EF" BorderThickness="2,2,2,2" Click="Button_Click_1"/>
     </Grid>
 </Window>
 
