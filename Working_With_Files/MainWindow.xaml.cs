@@ -25,22 +25,22 @@ namespace Working_With_Files
 
         private void OnLogMessageClicked(object sender, RoutedEventArgs e)
         {
-            const string From = @"C:\Rasmlar";
-            const string To = @"C:\Users\furqa\Desktop\TestPapka\Test2.txt";
-            //const string filePath = @"C:\Users\furqa\OneDrive\Рабочий стол\TestPapka\Test.txt";
-            //const string filePath2 = @"C:\Users\furqa\OneDrive\Рабочий стол\TestPapka\Test2.txt";
+            //const string From = @"C:\Rasmlar";
+            //const string To = @"C:\Users\furqa\Desktop\TestPapka\Test2.txt";
+            ////const string filePath = @"C:\Users\furqa\OneDrive\Рабочий стол\TestPapka\Test.txt";
+            ////const string filePath2 = @"C:\Users\furqa\OneDrive\Рабочий стол\TestPapka\Test2.txt";
 
-            var stream = new FileStream(To,FileMode.Open);
-            byte[] buffer = new byte[stream.Length];
-            //var malumot = @"// Directoridan foydalanish
-            ////if (Directory.Exists(path)) LogMessage(""Papka bor."");
-            ////else
-            ////{
-            ////    Directory.CreateDirectory(path);
-            ////    LogMessage(""Papka yaratildi."");
-            ////}
+            //var stream = new FileStream(To,FileMode.Open);
+            //byte[] buffer = new byte[stream.Length];
+            ////var malumot = @"// Directoridan foydalanish
+            //////if (Directory.Exists(path)) LogMessage(""Papka bor."");
+            //////else
+            //////{
+            //////    Directory.CreateDirectory(path);
+            //////    LogMessage(""Papka yaratildi."");
+            //////}
 
-            int read = stream.Read(buffer, 0, buffer.Length);
+            //int read = stream.Read(buffer, 0, buffer.Length);
             //// Papka haqidagi malumotlarni olamiz
 
             ////LogMessage(""Directory Name: "" + directoryInfo.Name);
@@ -123,7 +123,7 @@ namespace Working_With_Files
 
             //Log($"Byte File yasaldi {DateTime.Now}");
 
-            LogMessage(Encoding.UTF8.GetString(buffer));
+            //LogMessage(Encoding.UTF8.GetString(buffer));
             
             
             // -------------------------------Move to Methodi original faylni boshqa joyga ko'chiradi eskisini udalit qiladi ----------------------//
@@ -257,10 +257,9 @@ namespace Working_With_Files
             //string memoryContent = System.Text.Encoding.UTF8.GetString(buffer);
             //Log("Memory Contents:");
             //Log(memoryContent);
-        }
-    }
-
-
     }
 }
-}
+
+
+
+
