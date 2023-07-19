@@ -1,5 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.IO.Pipes;
+using System.Linq;
+using System.Text;
 using System.Windows;
 
 namespace Working_With_Files
@@ -22,9 +25,13 @@ namespace Working_With_Files
 
         private void OnLogMessageClicked(object sender, RoutedEventArgs e)
         {
+            const string From = @"C:\Rasmlar";
+            const string To = @"C:\Users\furqa\Desktop\TestPapka\Test2.txt";
             //const string filePath = @"C:\Users\furqa\OneDrive\Рабочий стол\TestPapka\Test.txt";
             //const string filePath2 = @"C:\Users\furqa\OneDrive\Рабочий стол\TestPapka\Test2.txt";
 
+            var stream = new FileStream(To,FileMode.Open);
+            byte[] buffer = new byte[stream.Length];
             //var malumot = @"// Directoridan foydalanish
             ////if (Directory.Exists(path)) LogMessage(""Papka bor."");
             ////else
@@ -33,6 +40,7 @@ namespace Working_With_Files
             ////    LogMessage(""Papka yaratildi."");
             ////}
 
+            int read = stream.Read(buffer, 0, buffer.Length);
             //// Papka haqidagi malumotlarni olamiz
 
             ////LogMessage(""Directory Name: "" + directoryInfo.Name);
@@ -115,6 +123,9 @@ namespace Working_With_Files
 
             //Log($"Byte File yasaldi {DateTime.Now}");
 
+            LogMessage(Encoding.UTF8.GetString(buffer));
+            
+            
             // -------------------------------Move to Methodi original faylni boshqa joyga ko'chiradi eskisini udalit qiladi ----------------------//
             //file.MoveTo(filePath);
             //Log("Fayl joyi o'zgartirildi");
@@ -144,18 +155,84 @@ namespace Working_With_Files
             // var stream = file.Open(FileMode.Truncate); // Bor faylli ochadi va uni ichini tozalab tashiydi 
             // var stream = file.Open(FileMode.Append); //Fayl bor bo'sa ochib ichiga malumotni ochirmasdan davomiga yozib ketadi.
 
+
+
+            //DirectoryInfo source = new(From);
+
+            //var papkalar = source.GetDirectories();
+            //var files = source.GetFiles();
+
+            //foreach (FileInfo file in files)
+            //{
+            //    string faylBoradiganJoy = Path.Combine(To, file.Name);
+            //    using (FileStream oqiydiganStream = file.OpenRead())
+            //    using (FileStream yozadiganStream = File.Create(faylBoradiganJoy))
+            //        oqiydiganStream.CopyTo(yozadiganStream);
+
+            //    file.Delete();
+            //}
             // var bytes = Encoding.UTF8.GetBytes(malumot);
 
+
+            //foreach (DirectoryInfo subdirectory in papkalar)
+            //{
+            //    string papkanIchidagiPapkalarBoradiganJoy = Path.Combine(To, subdirectory.Name);
+            //    PopkaniYoz(subdirectory.FullName, papkanIchidagiPapkalarBoradiganJoy);
+            //    subdirectory.Delete();
+            //}
             //stream.Write(bytes, 0, bytes.Length);
             //stream.Close();
             //Log("Fayl yasaldi");
 
+            //static void PopkaniYoz(string originalPapkaTurganJoy, string popkaYoziladiganJoy)
+            //{
+            //    Directory.CreateDirectory(popkaYoziladiganJoy);
+
+            //    foreach (string file in Directory.GetFiles(originalPapkaTurganJoy))
+            //    {
+            //        string faylBoradiganJoy = Path.Combine(To, Path.GetFileName(file));
+
+            //        using (FileStream oqiydiganStream = File.Open(file,FileMode.OpenOrCreate))
+            //        using (FileStream yozadiganStream = File.Create(faylBoradiganJoy))
+            //                    oqiydiganStream.CopyTo(yozadiganStream);
+
+            //        File.Delete(file);
+            //    }
+
+            //    foreach (string subdirectory in Directory.GetDirectories(originalPapkaTurganJoy))
+            //    {
+            //        string ichidigiPopkaTuradiganJoy = Path.Combine(popkaYoziladiganJoy, Path.GetFileName(subdirectory));
+            //        PopkaniYoz(subdirectory, ichidigiPopkaTuradiganJoy);
+            //        Directory.Delete(subdirectory);
+            //    }
+            //}
             //----------------------------Faylarni ko'chirildi --------------------------------------------------------------//
             //var faylPath = @"C:\Users\furqa\OneDrive\Изображения\Снимки экрана";
             //var adressToMove = @"C:\Users\furqa\OneDrive\Рабочий стол\TestPapka";
 
+            //LogMessage("Ishladi");
+
+            //var file = new FileInfo(From);
+
+            //var stream = file.Open(FileMode.OpenOrCreate);
+            //var stream = file.Open(FileMode.Append);
+            //var stream = file.Open(FileMode.Create);
+            //var stream = file.Open(FileMode.Open);
+            //var stream = file.Open(FileMode.CreateNew);
+            //var stream = file.Open(FileMode.Truncate);
+
+            //LogMessage($"{file.Name} {file.CreationTime}");
+
+            //var malumot2 = "salom";
+
+            //var bytes = Encoding.UTF8.GetBytes(malumot2);
             //var files = new DirectoryInfo(faylPath).GetFiles();
 
+            //stream.Write(bytes,0,bytes.Length);
+            ////stream.Close();
+            //stream.Dispose();
+
+            //LogMessage("Faylga malumot yozildi.");
             //if (Directory.Exists(faylPath))
             //{
             //    foreach (var rasm in files)
@@ -167,10 +244,15 @@ namespace Working_With_Files
 
             // ------------------------------------------------------------------ Memory Stream --------------------------------------------------------------------//
 
+            //File.AppendAllLines(From,malumot.Split("//"));
+            ////File.WriteAllBytes(To,bytes);
+            ////File.Copy(From,To);
+            //LogMessage("Ishladi");
             //using MemoryStream memoryStream = new ();
             //byte[] bytes = System.Text.Encoding.UTF8.GetBytes(malumot);
             //memoryStream.Write(bytes, 0, bytes.Length);
 
+        }
             //byte[] buffer = memoryStream.ToArray();
             //string memoryContent = System.Text.Encoding.UTF8.GetString(buffer);
             //Log("Memory Contents:");
@@ -178,4 +260,7 @@ namespace Working_With_Files
         }
     }
 
+
+    }
+}
 }
