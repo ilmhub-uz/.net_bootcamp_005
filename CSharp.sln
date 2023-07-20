@@ -33,7 +33,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task", "Task\Task.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataStructure", "DataStructure\DataStructure.csproj", "{0364F5A3-8905-45C7-9AA1-1CD1C37C750A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Working_With_Files", "Working_With_Files\Working_With_Files.csproj", "{8F744A23-8A35-4DE4-A70C-5448D247A63D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Working_With_Files", "Working_With_Files\Working_With_Files.csproj", "{8F744A23-8A35-4DE4-A70C-5448D247A63D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Json", "Json\Json.csproj", "{B933A8CF-E263-4FC8-8EBA-C884E3709C44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +107,10 @@ Global
 		{8F744A23-8A35-4DE4-A70C-5448D247A63D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F744A23-8A35-4DE4-A70C-5448D247A63D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F744A23-8A35-4DE4-A70C-5448D247A63D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B933A8CF-E263-4FC8-8EBA-C884E3709C44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B933A8CF-E263-4FC8-8EBA-C884E3709C44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B933A8CF-E263-4FC8-8EBA-C884E3709C44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B933A8CF-E263-4FC8-8EBA-C884E3709C44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
