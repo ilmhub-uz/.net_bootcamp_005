@@ -3,12 +3,31 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Working_With_Files"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Icon="/cli-tools.jpg">
-    <Grid>
-        <TextBox x:Name="logTextBox" VerticalScrollBarVisibility="Auto" IsReadOnly="True" />
-        <Button Content="Papka yasa va Log qil" Click="OnLogMessageClicked" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,346,0,0" Width="334" Height="60" />
+    <Grid Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+           
+            <RowDefinition Height="*"/>
+            
+            <RowDefinition Height="Auto"/>
+           
+        </Grid.RowDefinitions>
+
+        <TextBox x:Name="InputTextBox" HorizontalAlignment="Left" BorderBrush="Black" VerticalAlignment="Top"
+                 Margin="10,10,0,0" Grid.Row="0" BorderThickness="2,2,2,2" Width="780" Height="38"
+                 FontFamily="Segoe UI Black" FontSize="14" FontWeight="Bold"/>
+
+        <TextBox x:Name="logTextBox" VerticalScrollBarVisibility="Auto" IsReadOnly="True" BorderBrush="Black"
+                 Background="#FFE6F9F9" Margin="10,0,10,0" Grid.Row="1" FontSize="20" FontWeight="Bold"
+                 FontFamily="Segoe UI Variable Display Semibold"/>
+
+        <Button Grid.Row="2" Content="Encrypt" HorizontalAlignment="Left" Height="31" Width="215"
+                Margin="10,0,0,10" Click="EncryptButton_Click" Background="#FF07F9E9"/>
+        <Button Grid.Row="2" Content="Decrypt" Height="31" Width="215" HorizontalAlignment="Right"
+                Margin="0,0,10,10" Click="DecryptButton_Click" Background="#FF53FF07"/>
     </Grid>
 </Window>
+
 
